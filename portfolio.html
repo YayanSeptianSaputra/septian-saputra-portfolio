@@ -483,8 +483,8 @@
         <h3>Single source of truth</h3>
         <p>One JSON file generates a live web dashboard, a Google Sheet, and an 11-tab Excel archive. Pass/fail is computed by comparing recorded reality to expectation — never hand-typed.</p>
         <div class="evidence-row">
-          <a class="evidence-link" href="https://claude.ai/artifact/DmWwBi99aYzsfpSDUPvpDp" target="_blank" rel="noopener">↗ Live dashboard</a>
-          <a class="evidence-link" href="https://claude.ai/artifact/SVBsU5byLb4h3ie4w5Lga7" target="_blank" rel="noopener">↗ Sign-off record</a>
+          <a class="evidence-link" href="https://claude.ai/artifact/DmWwBi99aYzsfpSDUPvpDp" target="_blank" rel="noopener">↗ Sprint 47 dashboard</a>
+          <a class="evidence-link" href="https://claude.ai/artifact/SVBsU5byLb4h3ie4w5Lga7" target="_blank" rel="noopener">↗ Sprint 47 test evidence</a>
         </div>
       </div>
     </div>
@@ -514,8 +514,8 @@
     <div class="grp-h rv"><span class="status ok">Delivered</span><h3>Passed QA, ready for production</h3></div>
     <div class="cards one">
       <div class="card pmtag rv">
-        <span class="tag">PRD · Sprint 47</span>
-        <h3>Prorata &ldquo;Hari Kerja Tetap&rdquo; — From Calendar Range to Actual Attendance</h3>
+        <span class="tag">PRD · Improvement · Delivered</span>
+        <h3>Payroll Prorate Calculation (Hari Kerja Tetap) — From Calendar Range to Actual Attendance</h3>
         <p>Closed the gap between what the requirement owner expected (prorate by days actually worked) and what the system did (prorate by calendar range, silently capping to full pay). Defined the new formula, a cycle-status rule so an employee never gets prorate <i>and</i> absence deductions for the same period, live re-evaluation for backdated offboards, and a single-component rule for resign-then-rehire in one cycle. Walked 13 ambiguous points through with the owner and wrote five worked payslip simulations plus an interactive calculator, so engineering and QA could check numbers without asking. In Sprint 47 (9&ndash;25 Sep 2026) all 9 parts passed QA and the feature reached Ready To Production.</p>
         <div class="metrics">
           <div class="m"><span class="v">9/9</span><span class="k">parts passed QA</span></div>
@@ -524,9 +524,9 @@
         </div>
         <div class="evidence-row">
           <a class="evidence-link" href="https://claude.ai/artifact/SvpmGQZRNjKqxUWc5tFDs8" target="_blank" rel="noopener">↗ Full PRD</a>
-          <a class="evidence-link" href="https://claude.ai/artifact/74DQ3uoMPj466mDg24jngm" target="_blank" rel="noopener">↗ Sprint 47 progress report</a>
-          <a class="evidence-link" href="https://claude.ai/artifact/DmWwBi99aYzsfpSDUPvpDp" target="_blank" rel="noopener">↗ Live dashboard</a>
-          <a class="evidence-link" href="https://claude.ai/artifact/SVBsU5byLb4h3ie4w5Lga7" target="_blank" rel="noopener">↗ Sign-off record</a>
+          <a class="evidence-link" href="https://claude.ai/artifact/74DQ3uoMPj466mDg24jngm" target="_blank" rel="noopener">↗ Sprint 47 Progress Report</a>
+          <a class="evidence-link" href="https://claude.ai/artifact/DmWwBi99aYzsfpSDUPvpDp" target="_blank" rel="noopener">↗ Sprint 47 dashboard</a>
+          <a class="evidence-link" href="https://claude.ai/artifact/SVBsU5byLb4h3ie4w5Lga7" target="_blank" rel="noopener">↗ Sprint 47 test evidence</a>
         </div>
       </div>
     </div>
@@ -534,7 +534,7 @@
     <div class="grp-h rv"><span class="status fin">Final</span><h3>Written and finalized</h3></div>
     <div class="cards one">
       <div class="card pmtag rv">
-        <span class="tag">PRD</span>
+        <span class="tag">PRD · Improvement · Final</span>
         <h3>Overtime Enhancement — Break Time, Policy Cleanup &amp; Consistency</h3>
         <p>Triggered by a logistics client (Foresight × PT Hankyu Hanshin Logistik) whose staff took mid-shift breaks the system paid as full overtime. Scoped into 3 features and 10 requirements across Web / Mobile ESS / Backend, each with explicit acceptance criteria. Ran the requirement-clarification loop through to resolution on 7 open questions before implementation started.</p>
         <div class="metrics">
@@ -550,7 +550,7 @@
     <div class="grp-h rv"><span class="status draft">Draft</span><h3>Written ahead of development</h3></div>
     <div class="cards">
       <div class="card pmtag rv">
-        <span class="tag">PRD · Draft</span>
+        <span class="tag">PRD · Improvement · Draft</span>
         <h3>Face Recognition Attendance Mapping</h3>
         <p>Replaced an ambiguous single toggle with two explicit enforcement modes — strict per-staff block vs. business-wide optional — closing a recurring support-ticket source. 4 user stories plus a 4-scenario configuration matrix covering every combination of policy and photo status.</p>
         <div class="metrics">
@@ -562,7 +562,7 @@
         </div>
       </div>
       <div class="card pmtag rv">
-        <span class="tag">PRD · Draft · SBOOK-4692</span>
+        <span class="tag">PRD · Improvement · Draft · SBOOK-4692</span>
         <h3>Off-cycle Partial Run Payroll — Original Stays in Review, Copy Holds the Paid Staff</h3>
         <p>Reproduced the problem on staging first: running part of an off-cycle payroll pulled the whole cycle out of Review, a partial rollback left a replica that ignored new settings, and a second partial run orphaned the first invoice. Specified the fix as a split model — the Original keeps following the settings, each partial run spawns a Copy that carries the plan and invoice, and rollback merges staff back — anchored on one invariant: every staff appears exactly once across all cycles. The PRD ships with a live 4-staff simulation, mocks for eleven front-end fixes, backend decision flows, and the evidence table. Broke it into a parent ticket with BE and FE sub-tasks and surfaced a separate backend bug (rollback of all staff returning HTTP 500) on the way. Open decisions are listed in the document rather than hidden.</p>
         <div class="metrics">
@@ -598,7 +598,7 @@
       </div>
       <div class="step">
         <div class="num">4</div>
-        <div><h4>Executive reporting</h4><p>Weekly Product &amp; Engineering updates, tailored to three formats — full deck, chat-length summary, and email. Sprint reports plain enough for non-engineers: per-feature status, issues to fix first, and the decision needed from the PM.</p><div class="evidence-row"><a class="evidence-link" href="https://claude.ai/artifact/74DQ3uoMPj466mDg24jngm" target="_blank" rel="noopener">↗ Sprint 47 progress report</a></div></div>
+        <div><h4>Executive reporting</h4><p>Weekly Product &amp; Engineering updates, tailored to three formats — full deck, chat-length summary, and email. Sprint reports plain enough for non-engineers: per-feature status, issues to fix first, and the decision needed from the PM.</p><div class="evidence-row"><a class="evidence-link" href="https://claude.ai/artifact/74DQ3uoMPj466mDg24jngm" target="_blank" rel="noopener">↗ Sprint 47 Progress Report</a></div></div>
       </div>
     </div>
     <p class="lede rv" style="margin-top:1.6rem;font-size:.92rem">Track record: <b>1,674 of the team's 4,574 Jira issues filed (36%)</b> — the highest volume of any teammate — sustained from manual QA days through today. Authored and signed off structured test cases across <b>33 sprints of UAT and 12 sprints of SIT</b>.</p>
