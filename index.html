@@ -721,7 +721,15 @@ var GREETING_AUDIO_B64 = "SUQzBAAAAAEBflRTU0UAAAAOAAADTGF2ZjYwLjE2LjEwMUdFT0IAAQ
       }
     });
 
-    window.addEventListener('resize', function(){ sizeCanvas(); });
+    window.addEventListener('resize', function(){
+      var ow = W, oh = H;
+      sizeCanvas();
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        if (ow < 10 || oh < 10) { p.x = Math.random() * W; p.y = Math.random() * H; }
+        else { p.x *= W / ow; p.y *= H / oh; }
+      }
+    });
   } catch(e){}
 })();
 </script>
