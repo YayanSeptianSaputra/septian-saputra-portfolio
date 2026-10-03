@@ -338,7 +338,7 @@
   .cta-actions { display: flex; flex-wrap: wrap; gap: .8rem; position: relative; z-index: 1; }
   .cta-btn.outline { background: transparent; color: var(--onDark); border: 1px solid rgba(236,239,234,.35); }
   .cta-btn.outline:hover { border-color: var(--gold); color: var(--gold); box-shadow: none; }
-  /* ---------------- Particle intro overlay (cinematic) ---------------- */
+  /* ---------------- Coding-screen intro overlay ---------------- */
   .intro-overlay {
     position: fixed; inset: 0; z-index: 9999; background: #05070a; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
@@ -349,31 +349,84 @@
   .intro-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .intro-vignette {
     position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(130% 110% at 50% 50%, transparent 38%, rgba(1,3,5,.62) 100%);
+    background: radial-gradient(130% 110% at 50% 50%, transparent 38%, rgba(1,3,5,.7) 100%);
   }
   .intro-flash {
     position: absolute; inset: 0; pointer-events: none; opacity: 0;
-    background: radial-gradient(circle at 50% 42%, rgba(205,250,255,.28), transparent 58%);
+    background: radial-gradient(circle at 50% 42%, rgba(205,250,255,.22), transparent 58%);
     transition: opacity .32s ease;
   }
   .intro-flash.pulse { opacity: 1; transition: opacity .09s ease; }
   .intro-content {
     position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;
-    gap: 1.1rem; padding: 0 1.5rem; text-align: center;
+    gap: 1rem; padding: 0 1rem; text-align: center; width: 100%;
   }
   .intro-eyebrow {
     font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .34em; text-transform: uppercase;
-    color: rgba(173,230,240,.55); opacity: 0; transition: opacity .8s ease; margin-bottom: .2rem;
+    color: rgba(173,230,240,.6); opacity: 0; transition: opacity .8s ease;
   }
   .intro-eyebrow.show { opacity: 1; }
+
+  /* editor window */
+  .code-win {
+    width: min(94vw, 580px); text-align: left; border-radius: 12px; overflow: hidden;
+    background: rgba(7,11,15,.9); border: 1px solid rgba(159,232,239,.2);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(0,0,0,.4), 0 0 60px -22px rgba(79,216,232,.45);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    font-family: "IBM Plex Mono", monospace; font-size: clamp(.62rem, 2.55vw, .8rem);
+  }
+  .code-bar {
+    display: flex; align-items: center; gap: .55em; padding: .62em .9em;
+    background: rgba(159,232,239,.05); border-bottom: 1px solid rgba(159,232,239,.12);
+    color: rgba(173,230,240,.6); font-size: .88em;
+  }
+  .code-bar i { width: .72em; height: .72em; border-radius: 50%; display: block; background: #3a4650; }
+  .code-bar i:nth-child(1) { background: #e0675f; }
+  .code-bar i:nth-child(2) { background: #e3b64f; }
+  .code-bar i:nth-child(3) { background: #55c27a; }
+  .code-bar .tab { margin-left: .7em; color: #D5DEE5; }
+  .code-bar .lang { margin-left: auto; opacity: .7; }
+  .code-scroll { height: 13.2em; overflow: hidden; display: flex; align-items: flex-start; padding: .8em 0; position: relative; }
+  .code-gut, .code-src {
+    margin: 0; font: inherit; line-height: 1.65; white-space: pre; letter-spacing: 0;
+  }
+  .code-gut {
+    flex: 0 0 auto; min-width: 3em; padding: 0 .8em 0 .9em; text-align: right; color: rgba(159,232,239,.28);
+    user-select: none;
+  }
+  .code-src { flex: 1 1 auto; min-width: 0; color: #D5DEE5; padding-right: .9em; }
+  .code-src .k { color: #86B7FF; }
+  .code-src .s { color: #8BE9C6; }
+  .code-src .n { color: #F2C879; }
+  .code-src .f { color: #4FD8E8; }
+  .code-src .c { color: #5F7080; font-style: italic; }
+  .code-src .p { color: #9AA7B2; }
+  .code-caret {
+    display: inline-block; width: .58em; height: 1.15em; margin-left: 1px; vertical-align: -.2em;
+    background: #4FD8E8; animation: caretBlink 1s steps(1) infinite;
+  }
+  @keyframes caretBlink { 50% { opacity: 0; } }
+  .code-term {
+    border-top: 1px solid rgba(159,232,239,.12); background: rgba(0,0,0,.28);
+    padding: .6em .95em .7em; min-height: 7.6em; line-height: 1.65; color: #9AA7B2; white-space: pre; overflow: hidden;
+  }
+  .code-term .pr { color: #4FD8E8; }
+  .code-term .ok { color: #55c27a; }
+  .code-term .dim { color: #5F7080; }
+  .code-term div { opacity: 0; transform: translateY(3px); animation: termIn .25s ease forwards; }
+  @keyframes termIn { to { opacity: 1; transform: none; } }
+
+  .intro-ctl { display: grid; place-items: center; min-height: 5.2rem; width: 100%; }
+  .intro-ctl > * { grid-area: 1 / 1; }
+  .intro-status { display: flex; flex-direction: column; align-items: center; gap: .7rem; width: 100%; }
   .intro-label {
-    font-family: "IBM Plex Mono", monospace; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+    font-family: "IBM Plex Mono", monospace; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase;
     color: #9FE8EF; opacity: 0; transition: opacity .35s ease; min-height: 1.3em;
   }
   .intro-label.show { opacity: 1; }
   .intro-progress-wrap {
-    width: min(55vw, 280px); height: 2px; background: rgba(159,232,239,.14); border-radius: 2px;
-    overflow: hidden; opacity: 0; transition: opacity .4s ease; margin-top: .2rem;
+    width: min(60vw, 300px); height: 2px; background: rgba(159,232,239,.14); border-radius: 2px;
+    overflow: hidden; opacity: 0; transition: opacity .4s ease;
   }
   .intro-progress-wrap.show { opacity: 1; }
   .intro-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #2E9C9C, #4FD8E8); border-radius: 2px; }
@@ -395,33 +448,25 @@
   .intro-sound.show { opacity: 1; pointer-events: auto; }
   .intro-sound:hover { color: #fff; border-color: #4FD8E8; }
   .intro-gate {
-    position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+    position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .9rem;
     transition: opacity .5s ease, transform .5s ease;
   }
-  .intro-gate.hide { opacity: 0; transform: scale(.92); pointer-events: none; }
+  .intro-gate.hide { opacity: 0; transform: scale(.94); pointer-events: none; }
   .intro-gate-btn {
-    position: relative; width: 7.4rem; height: 7.4rem; border-radius: 50%;
-    border: 1px solid rgba(159,232,239,.35); background: rgba(159,232,239,.03); color: #EAFBFD;
-    font-family: "IBM Plex Mono", monospace; font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
-    cursor: pointer; transition: transform .3s, border-color .3s, background .3s, color .3s;
+    position: relative; height: 2.9rem; padding: 0 1.8rem; border-radius: 999px;
+    border: 1px solid rgba(79,216,232,.5); background: rgba(79,216,232,.07); color: #EAFBFD;
+    font-family: "IBM Plex Mono", monospace; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    cursor: pointer; transition: transform .3s, border-color .3s, background .3s, color .3s, box-shadow .3s;
   }
   .intro-gate-btn:hover {
-    transform: scale(1.07); border-color: #4FD8E8; background: rgba(79,216,232,.1); color: #4FD8E8;
-    box-shadow: 0 0 44px -6px rgba(79,216,232,.55);
+    transform: scale(1.05); border-color: #4FD8E8; background: rgba(79,216,232,.14); color: #4FD8E8;
+    box-shadow: 0 0 40px -6px rgba(79,216,232,.55);
   }
   .intro-gate-btn .ring {
-    position: absolute; inset: -11px; border-radius: 50%; border: 1px solid rgba(79,216,232,.35);
-    animation: gatePulse 2.4s ease-in-out infinite;
+    position: absolute; inset: -6px; border-radius: 999px; border: 1px solid rgba(79,216,232,.35);
+    animation: gatePulse 2.4s ease-in-out infinite; pointer-events: none;
   }
-  .intro-gate-btn .ring2 {
-    position: absolute; inset: -22px; border-radius: 50%;
-    background: conic-gradient(from 0deg, transparent, rgba(79,216,232,.65) 15%, transparent 32%, transparent 68%, rgba(74,117,176,.55) 84%, transparent 100%);
-    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
-    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
-    animation: ringSpin 7s linear infinite; opacity: .85;
-  }
-  @keyframes gatePulse { 0%,100% { transform: scale(1); opacity: .6; } 50% { transform: scale(1.16); opacity: 0; } }
-  @keyframes ringSpin { to { transform: rotate(360deg); } }
+  @keyframes gatePulse { 0%,100% { transform: scale(1); opacity: .6; } 50% { transform: scale(1.1, 1.3); opacity: 0; } }
   .intro-gate-mute {
     background: transparent; border: none; color: rgba(159,232,239,.6); font-family: "IBM Plex Mono", monospace;
     font-size: .74rem; letter-spacing: .04em; cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
@@ -430,7 +475,7 @@
   .intro-gate-mute:hover { color: #4FD8E8; }
   @media (prefers-reduced-motion: reduce) {
     .intro-overlay { transition: opacity .3s ease; }
-    .intro-gate-btn .ring, .intro-gate-btn .ring2 { animation: none; }
+    .intro-gate-btn .ring, .code-caret { animation: none; }
   }
 </style>
 </head>
@@ -447,17 +492,25 @@
   </button>
   <button class="intro-skip" id="introSkip" type="button">Skip intro</button>
   <div class="intro-content">
-    <div class="intro-eyebrow" id="introEyebrow">SYSTEM INITIALIZING</div>
-    <div class="intro-gate" id="introGate">
-      <button class="intro-gate-btn" id="introEnter" type="button">
-        <span class="ring"></span>
-        <span class="ring2"></span>
-        Enter
-      </button>
-      <button class="intro-gate-mute" id="introEnterMuted" type="button">Masuk tanpa suara</button>
+    <div class="intro-eyebrow" id="introEyebrow">$ boot sequence</div>
+    <div class="code-win" aria-hidden="true">
+      <div class="code-bar"><i></i><i></i><i></i><span class="tab">septian.ts</span><span class="lang">TypeScript · UTF-8</span></div>
+      <div class="code-scroll" id="introScroll"><pre class="code-gut" id="introGut">1</pre><pre class="code-src" id="introSrc"></pre></div>
+      <div class="code-term" id="introTerm"><div><span class="pr">$</span> <span class="dim">npm run profile</span></div></div>
     </div>
-    <div class="intro-label" id="introLabel"></div>
-    <div class="intro-progress-wrap" id="introProgressWrap"><div class="intro-progress-bar" id="introProgressBar"></div></div>
+    <div class="intro-ctl">
+      <div class="intro-gate" id="introGate">
+        <button class="intro-gate-btn" id="introEnter" type="button">
+          <span class="ring"></span>
+          &#9654; Enter
+        </button>
+        <button class="intro-gate-mute" id="introEnterMuted" type="button">Masuk tanpa suara</button>
+      </div>
+      <div class="intro-status">
+        <div class="intro-label" id="introLabel"></div>
+        <div class="intro-progress-wrap" id="introProgressWrap"><div class="intro-progress-bar" id="introProgressBar"></div></div>
+      </div>
+    </div>
   </div>
 </div>
 <script>
@@ -479,132 +532,193 @@ var GREETING_AUDIO_B64 = "SUQzBAAAAAEBflRTU0UAAAAOAAADTGF2ZjYwLjE2LjEwMUdFT0IAAQ
     var label = document.getElementById('introLabel');
     var progressWrap = document.getElementById('introProgressWrap');
     var progressBar = document.getElementById('introProgressBar');
-    if (!overlay || !canvas || !gate) return;
+    var scrollEl = document.getElementById('introScroll');
+    var gutEl = document.getElementById('introGut');
+    var srcEl = document.getElementById('introSrc');
+    var termEl = document.getElementById('introTerm');
+    if (!overlay || !canvas || !gate || !srcEl) return;
 
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var ctx = canvas.getContext('2d');
     var actx = aurora ? aurora.getContext('2d') : null;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = 0, H = 0;
-    var tier = window.innerWidth >= 1024 ? 'desktop' : (window.innerWidth >= 640 ? 'tablet' : 'mobile');
-    var COUNT = tier === 'desktop' ? 1100 : (tier === 'tablet' ? 650 : 380);
-    var GLOW_OK = tier !== 'mobile';
+    var mobile = window.innerWidth < 640;
+    var FS = Math.round((mobile ? 13 : 15) * dpr);
 
+    /* ---------- code rain (falling glyph columns behind the editor) ---------- */
+    var GLYPHS = '01{}[]()<>=;:/+-*&|#$%^~?!_@acdefgilnrstuxyz'.split('');
+    var drops = [];
+    function initRain(){
+      var cols = Math.ceil(W / FS), rows = Math.ceil(H / FS);
+      drops = [];
+      for (var i = 0; i < cols; i++) {
+        drops.push({ y: Math.random() * rows, sp: 0.3 + Math.random() * 0.7, last: -1 });
+      }
+    }
     function sizeCanvas(){
       W = canvas.width = Math.max(1, Math.round(window.innerWidth * dpr));
       H = canvas.height = Math.max(1, Math.round(window.innerHeight * dpr));
       if (aurora) { aurora.width = W; aurora.height = H; }
+      initRain();
     }
     sizeCanvas();
     if (eyebrow) eyebrow.classList.add('show');
 
-    /* ---- particle field: depth-layered (z: 0 near/fast/bright … 1 far/slow/dim) ---- */
-    var colors = ['#4FD8E8', '#2E9C9C', '#4A75B0', '#DFFBFF'];
-    var particles = [];
-    for (var i = 0; i < COUNT; i++) {
-      var z = Math.random();
-      particles.push({
-        x: Math.random() * W, y: Math.random() * H, z: z,
-        vx: (Math.random() - 0.5) * 0.3 * dpr, vy: (Math.random() - 0.5) * 0.3 * dpr,
-        star: GLOW_OK && Math.random() < 0.1,
-        size: (Math.random() * 1.6 + 1.0) * (1.35 - z * 0.75) * dpr,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        seed: Math.random() * 1000,
-        flowSeed: Math.random() * 6.28
-      });
-    }
-
-    /* flow-field: divergence-free curl noise (velocity = perpendicular gradient of a
-       slowly-drifting potential) so streams swirl forever and never collapse into clumps */
-    var F1 = 0.0021, F2 = 0.0026, F3 = 0.0014;
-    var S1 = 0.00035, S2 = 0.00044, S3 = 0.00026;
-    function flowVel(x, y, t, out){
-      var a = x * F1 + t * S1, b = y * F2 - t * S2, c = (x + y) * F3 + t * S3;
-      var sa = Math.sin(a), ca = Math.cos(a), sb = Math.sin(b), cb = Math.cos(b), cc = Math.cos(c);
-      out.vx = sa * (-sb) * F2 + 0.5 * cc * F3;
-      out.vy = -(ca * F1 * cb + 0.5 * cc * F3);
-    }
-    var _flow = { vx: 0, vy: 0 };
-
-    var raf = null, done = false;
-    var crystallize = 1;
+    var raf = null, done = false, crystallize = 1, lastTs = 0;
 
     function drawAurora(ts){
       if (!actx) return;
       actx.clearRect(0, 0, W, H);
       var blobs = [
-        { cx: .26, cy: .3, r: .6, c: '46,110,160' },
-        { cx: .76, cy: .24, r: .56, c: '46,150,150' },
-        { cx: .5, cy: .8, r: .64, c: '79,216,232' }
+        { cx: .24, cy: .3, r: .6, c: '46,110,160' },
+        { cx: .78, cy: .24, r: .56, c: '46,150,150' },
+        { cx: .5, cy: .82, r: .64, c: '79,216,232' }
       ];
       for (var i = 0; i < blobs.length; i++) {
-        var b = blobs[i];
-        var t = ts * 0.00005 + i * 2.1;
-        var cx = (b.cx + Math.sin(t) * 0.08) * W;
-        var cy = (b.cy + Math.cos(t * 0.82) * 0.08) * H;
+        var b = blobs[i], t = ts * 0.00005 + i * 2.1;
+        var cx = (b.cx + Math.sin(t) * 0.08) * W, cy = (b.cy + Math.cos(t * 0.82) * 0.08) * H;
         var r = b.r * Math.max(W, H);
         var g = actx.createRadialGradient(cx, cy, 0, cx, cy, r);
-        g.addColorStop(0, 'rgba(' + b.c + ',.16)');
+        g.addColorStop(0, 'rgba(' + b.c + ',.13)');
         g.addColorStop(1, 'rgba(' + b.c + ',0)');
         actx.fillStyle = g;
         actx.fillRect(0, 0, W, H);
       }
     }
 
-    /* warp-tunnel: in the opening beat, particles rocket outward from a vanishing point */
-    var warpT0 = null;
-    var WARP_MS = 1150;
+    function drawRain(dt){
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = 'rgba(5,7,10,0.085)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.font = FS + 'px "IBM Plex Mono", monospace';
+      ctx.textBaseline = 'top';
+      var rows = H / FS;
+      for (var i = 0; i < drops.length; i++) {
+        var d = drops[i];
+        d.y += d.sp * (dt / 16.7);
+        var row = Math.floor(d.y);
+        if (row !== d.last) {
+          d.last = row;
+          var ch = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+          var head = Math.random() < 0.18;
+          ctx.globalAlpha = (head ? 1 : 0.62) * crystallize;
+          ctx.fillStyle = head ? '#DFFBFF' : (Math.random() < 0.3 ? '#4A75B0' : '#2E9C9C');
+          ctx.fillText(ch, i * FS, row * FS);
+        }
+        if (d.y > rows && Math.random() > 0.97) { d.y = -Math.random() * 12; d.sp = 0.3 + Math.random() * 0.7; d.last = -1; }
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    /* ---------- typed code ---------- */
+    var CODE = [
+      '// septian.ts · StafBook QA + Product',
+      'import { suite } from "@stafbook/qa";',
+      '',
+      'const septian = {',
+      '  role: "Product Manager + QA Lead",',
+      '  company: "PT. Stafbook Teknologi Asia",',
+      '  stack: ["Playwright", "Maestro", "TS"],',
+      '};',
+      '',
+      'async function boot() {',
+      '  await suite.web();     // 174 tests',
+      '  await suite.api();     // 95 tests',
+      '  await suite.prod();    // 32 tests',
+      '  await suite.mobile();  // 42 flows',
+      '  return render(septian);',
+      '}',
+      '',
+      'boot();'
+    ];
+    var chars = [], kinds = [];
+    (function build(){
+      for (var li = 0; li < CODE.length; li++) {
+        var line = CODE[li], cls = [];
+        for (var i = 0; i < line.length; i++) cls.push('p');
+        var mark = function(re, k){
+          var m; re.lastIndex = 0;
+          while ((m = re.exec(line))) {
+            for (var j = m.index; j < m.index + m[0].length; j++) cls[j] = k;
+            if (m[0].length === 0) re.lastIndex++;
+          }
+        };
+        mark(/\b(import|from|const|async|await|function|return)\b/g, 'k');
+        mark(/\b\d+\b/g, 'n');
+        mark(/\b[a-zA-Z_]\w*(?=\()/g, 'f');
+        mark(/"[^"]*"/g, 's');
+        mark(/\/\/.*$/g, 'c');
+        for (var c = 0; c < line.length; c++) { chars.push(line.charAt(c)); kinds.push(cls[c]); }
+        if (li < CODE.length - 1) { chars.push('\n'); kinds.push('p'); }
+      }
+    })();
+    var TOTAL = chars.length;
+    var IDLE_CHARS = CODE[0].length + 1 + CODE[1].length;   /* typed on its own while waiting at the gate */
+    var shown = -1;
+    function esc(c){ return c === '&' ? '&amp;' : (c === '<' ? '&lt;' : (c === '>' ? '&gt;' : c)); }
+    function renderCode(n){
+      if (n === shown) return;
+      shown = n;
+      var html = '', run = '', cur = null, lines = 1;
+      for (var i = 0; i < n; i++) {
+        var ch = chars[i], k = kinds[i];
+        if (ch === '\n') lines++;
+        if (k !== cur) { if (run) html += '<span class="' + cur + '">' + run + '</span>'; run = ''; cur = k; }
+        run += esc(ch);
+      }
+      if (run) html += '<span class="' + cur + '">' + run + '</span>';
+      srcEl.innerHTML = html + '<span class="code-caret"></span>';
+      var g = ''; for (var l = 1; l <= lines; l++) g += l + (l < lines ? '\n' : '');
+      gutEl.textContent = g;
+      scrollEl.scrollTop = scrollEl.scrollHeight;
+    }
+
+    var termStage = 0;
+    function termLine(html){
+      var d = document.createElement('div'); d.innerHTML = html; termEl.appendChild(d);
+    }
+    function termUpTo(p){
+      if (termStage < 1 && p >= 0.86) { termStage = 1; termLine('<span class="ok">✓</span> 301 tests passed <span class="dim">· 64 specs</span>'); flashPulse(); }
+      if (termStage < 2 && p >= 0.92) { termStage = 2; termLine('<span class="ok">✓</span> 42 mobile flows <span class="dim">· maestro</span>'); }
+      if (termStage < 3 && p >= 0.97) { termStage = 3; termLine('<span class="pr">●</span> profile ready'); }
+    }
+
+    var greeting = null, assemblyStart = null, withSoundMode = false, codeT0 = null, pMono = 0;
+    var TOTAL_CHOREO_MS = 5200;
+    var MAX_WAIT_MS = 18000;
+
+    function currentP(){
+      var pct = 0;
+      if (assemblyStart) {
+        if (withSoundMode && greeting && !greeting.paused && !isNaN(greeting.duration) && greeting.duration > 0) {
+          pct = greeting.currentTime / greeting.duration;
+        } else {
+          pct = (performance.now() - assemblyStart) / TOTAL_CHOREO_MS;
+        }
+      }
+      pct = Math.max(0, Math.min(1, pct));
+      if (pct > pMono) pMono = pct;
+      return pMono;
+    }
+
+    function setLabel(text){ if (label) label.textContent = text; }
 
     function frame(ts){
-      if (warpT0 === null) warpT0 = ts;
-      var warpP = Math.min(1, (ts - warpT0) / WARP_MS);
-
+      if (codeT0 === null) codeT0 = ts;
+      var dt = lastTs ? Math.min(60, ts - lastTs) : 16.7; lastTs = ts;
       drawAurora(ts);
-      ctx.fillStyle = 'rgba(4,6,8,0.22)';
-      ctx.fillRect(0, 0, W, H);
+      drawRain(dt);
 
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        var depthSpeed = 0.4 + (1 - p.z) * 1.3;
-
-        if (warpP < 1 && !done) {
-          var cx0 = W / 2, cy0 = H / 2;
-          var ddx = p.x - cx0, ddy = p.y - cy0;
-          var dd = Math.sqrt(ddx * ddx + ddy * ddy) || 1;
-          var push = (1 - warpP) * 2.6 * depthSpeed * dpr;
-          p.x += (ddx / dd) * push;
-          p.y += (ddy / dd) * push;
-        } else {
-          flowVel(p.x, p.y, ts + p.flowSeed * 1000, _flow);
-          p.vx += _flow.vx * 55 * depthSpeed;
-          p.vy += _flow.vy * 55 * depthSpeed;
-          p.vx *= 0.95; p.vy *= 0.95;
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < -20) p.x = W + 20; if (p.x > W + 20) p.x = -20;
-          if (p.y < -20) p.y = H + 20; if (p.y > H + 20) p.y = -20;
-        }
-
-        if (p.star) { ctx.shadowBlur = 8 * dpr; ctx.shadowColor = p.color; }
-        else { ctx.shadowBlur = 0; }
-        ctx.fillStyle = p.color;
-        var baseAlpha = 0.3 + (1 - p.z) * 0.5;
-        ctx.globalAlpha = baseAlpha * crystallize;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
+      var idleN = Math.min(IDLE_CHARS, Math.floor((ts - codeT0) / 32));
+      var p = currentP();
+      var target = IDLE_CHARS + (TOTAL - IDLE_CHARS) * Math.min(1, p / 0.84);
+      renderCode(Math.max(idleN, Math.floor(target)));
+      if (assemblyStart && !done) {
+        termUpTo(p);
+        setLabel(p < 0.84 ? 'Compiling…' : (p < 0.99 ? 'Running tests…' : (withSoundMode ? 'Ready…' : '')));
       }
-      ctx.shadowBlur = 0;
-      ctx.globalAlpha = 1;
-
-      if (progressBar) {
-        var pct;
-        if (greeting && !greeting.paused && !isNaN(greeting.duration) && greeting.duration > 0) {
-          pct = greeting.currentTime / greeting.duration;
-        } else if (assemblyStart) {
-          pct = (performance.now() - assemblyStart) / TOTAL_CHOREO_MS;
-        } else { pct = 0; }
-        progressBar.style.width = (Math.max(0, Math.min(1, pct)) * 100) + '%';
-      }
+      if (progressBar) progressBar.style.width = (p * 100) + '%';
       raf = requestAnimationFrame(frame);
     }
 
@@ -617,6 +731,8 @@ var GREETING_AUDIO_B64 = "SUQzBAAAAAEBflRTU0UAAAAOAAADTGF2ZjYwLjE2LjEwMUdFT0IAAQ
     function finish(){
       if (done) return;
       done = true;
+      if (assemblyStart) { renderCode(TOTAL); termUpTo(1); }
+      flashPulse();
       var t0 = performance.now(), DUR = 480;
       (function fade(ts){
         var p = Math.min(1, (ts - t0) / DUR);
@@ -634,10 +750,9 @@ var GREETING_AUDIO_B64 = "SUQzBAAAAAEBflRTU0UAAAAOAAADTGF2ZjYwLjE2LjEwMUdFT0IAAQ
     document.body.style.overflow = 'hidden';
     document.addEventListener('visibilitychange', function(){
       if (document.hidden) { if (raf) { cancelAnimationFrame(raf); raf = null; } }
-      else if (!done && !raf) { raf = requestAnimationFrame(frame); }
+      else if (!done && !raf) { lastTs = 0; raf = requestAnimationFrame(frame); }
     });
 
-    var greeting = null;
     try {
       if (typeof GREETING_AUDIO_B64 === 'string' && GREETING_AUDIO_B64) {
         greeting = new Audio('data:audio/mpeg;base64,' + GREETING_AUDIO_B64);
@@ -654,35 +769,24 @@ var GREETING_AUDIO_B64 = "SUQzBAAAAAEBflRTU0UAAAAOAAADTGF2ZjYwLjE2LjEwMUdFT0IAAQ
     }
     updateSoundIcon();
 
-    var TOTAL_CHOREO_MS = 3600;
-    var MAX_WAIT_MS = 18000;
-    var assemblyStart = null;
-
-    function setLabel(text){ if (label) label.textContent = text; }
-
     function beginAssembly(withSound){
       assemblyStart = performance.now();
+      withSoundMode = !!(withSound && greeting);
       gate.classList.add('hide');
       if (eyebrow) eyebrow.classList.remove('show');
       if (label) label.classList.add('show');
       if (soundBtn) soundBtn.classList.add('show');
       if (skipBtn) skipBtn.classList.add('show');
       if (progressWrap) progressWrap.classList.add('show');
-      setLabel('Streaming data…');
-
-      setTimeout(function(){ flashPulse(); setLabel('Calibrating…'); }, TOTAL_CHOREO_MS * 0.55);
-      setTimeout(function(){
-        flashPulse();
-        setLabel(withSound ? 'Ready…' : '');
-      }, TOTAL_CHOREO_MS);
+      setLabel('Compiling…');
 
       if (withSound && greeting) {
         muted = false; updateSoundIcon();
         greeting.addEventListener('ended', finish, { once: true });
         try {
-          var p = greeting.play();
-          if (p && p.catch) p.catch(function(){ setTimeout(finish, Math.max(TOTAL_CHOREO_MS, 4000)); });
-        } catch(e){ setTimeout(finish, Math.max(TOTAL_CHOREO_MS, 4000)); }
+          var pl = greeting.play();
+          if (pl && pl.catch) pl.catch(function(){ withSoundMode = false; setTimeout(finish, TOTAL_CHOREO_MS + 400); });
+        } catch(e){ withSoundMode = false; setTimeout(finish, TOTAL_CHOREO_MS + 400); }
         setTimeout(function(){ if (!done) finish(); }, MAX_WAIT_MS);
       } else {
         muted = true; updateSoundIcon();
@@ -715,21 +819,13 @@ var GREETING_AUDIO_B64 = "SUQzBAAAAAEBflRTU0UAAAAOAAADTGF2ZjYwLjE2LjEwMUdFT0IAAQ
           if (greeting.paused && greeting.currentTime === 0) {
             greeting.addEventListener('ended', finish, { once: true });
           }
-          var p = greeting.play();
-          if (p && p.catch) p.catch(function(){});
+          var pl = greeting.play();
+          if (pl && pl.catch) pl.catch(function(){});
         } catch(e){}
       }
     });
 
-    window.addEventListener('resize', function(){
-      var ow = W, oh = H;
-      sizeCanvas();
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        if (ow < 10 || oh < 10) { p.x = Math.random() * W; p.y = Math.random() * H; }
-        else { p.x *= W / ow; p.y *= H / oh; }
-      }
-    });
+    window.addEventListener('resize', function(){ sizeCanvas(); });
   } catch(e){}
 })();
 </script>
