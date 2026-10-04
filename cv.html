@@ -369,6 +369,10 @@
   .dl-btn { text-decoration: none; }
   .dl-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -12px rgba(216,165,72,.5); }
   .dl-btn:disabled { opacity: .55; cursor: default; transform: none; box-shadow: none; }
+  .ver-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .6rem; margin-top: 1.1rem; }
+  .ver-row .ver-label { font-family: "IBM Plex Mono", monospace; font-size: .76rem; color: var(--onDark-soft); letter-spacing: .08em; text-transform: uppercase; margin-right: .2rem; }
+  .ver-row a { font-family: "IBM Plex Mono", monospace; font-size: .8rem; color: var(--onDark); text-decoration: none; border: 1px solid rgba(236,239,234,.28); border-radius: 999px; padding: .32rem .8rem; transition: border-color .25s, color .25s, transform .25s; }
+  .ver-row a:hover { color: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
   .dl-status { font-family: "IBM Plex Mono", monospace; font-size: .78rem; color: var(--onDark-soft); margin-left: .8rem; }
 
   .sec-eyebrow { font-family: "IBM Plex Mono", monospace; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-faint); }
@@ -424,6 +428,13 @@
         Download PDF
       </a>
       
+    </div>
+    <div class="ver-row">
+      <span class="ver-label">Role-focused versions</span>
+      <a href="assets/resumes/Septian-Saputra-Resume-General.pdf" download>General</a>
+      <a href="assets/resumes/Septian-Saputra-Resume-Product-Manager.pdf" download>Product Manager</a>
+      <a href="assets/resumes/Septian-Saputra-Resume-QA-Automation-Lead.pdf" download>QA Automation Lead</a>
+      <a href="assets/resumes/Septian-Saputra-Resume-Project-Manager-Scrum-Master.pdf" download>Project Manager / Scrum Master</a>
     </div>
   </div>
 </div>
