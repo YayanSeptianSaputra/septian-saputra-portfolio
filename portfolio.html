@@ -424,21 +424,28 @@
 <!-- ============ Demo video ============ -->
 <section class="block" id="demo">
   <div class="wrap">
-    <div class="sec-eyebrow rv">Demo · 3 minutes</div>
+    <div class="sec-eyebrow rv">Demo · film + earlier video</div>
     <h2 class="rv">Watch the automation run</h2>
-    <p class="lede rv">Two short demos on a public practice site (saucedemo.com), so no private data is involved. First, Claude drives a browser by itself through a full checkout. Second, a Playwright + TypeScript suite that opens a fresh browser by itself and runs seven checks, all passing.</p>
+    <p class="lede rv">Public apps only, so no private data is involved. The featured film covers web and native Android. Below it, an earlier demo on saucedemo.com: Claude drives a browser through a full checkout, then a Playwright suite runs seven checks, all passing.</p>
     <div class="rv" style="margin-top:1.6rem;max-width:56rem">
+      <h3 style="font-size:1.2rem;margin:0 0 .4rem">Featured film: web + native Android (2 min)</h3>
+      <p class="mut" style="margin:0 0 .8rem;font-size:.92rem;color:var(--text-soft)">A Playwright + TypeScript suite (29 checks across Desktop Chrome and a Pixel 7 profile, stable over three runs) and a Maestro flow driving the native Google Calculator on a real Android phone over USB debugging, with a JavaScript oracle checking 4 of 4 cases. Public apps only.</p>
+      <div role="group" aria-label="Narration language" style="display:flex;gap:.5rem;margin-bottom:.7rem">
+        <button type="button" class="film-lang" data-lang="en" aria-pressed="true" style="padding:.35rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--text);color:var(--paper);font:inherit;font-size:.85rem;cursor:pointer">English</button>
+        <button type="button" class="film-lang" data-lang="id" aria-pressed="false" style="padding:.35rem .9rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);font:inherit;font-size:.85rem;cursor:pointer">Bahasa Indonesia</button>
+      </div>
+      <video id="film" controls preload="metadata" playsinline poster="assets/demo/film-en-poster.jpg" src="assets/demo/film-en.mp4" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:#0E1418">
+        Your browser does not play this video. <a href="assets/demo/film-en.mp4">Download it (MP4, 6.8 MB)</a>.
+      </video>
+      <p class="mut" style="margin-top:.7rem;font-size:.85rem;color:var(--text-faint)">Narration is an AI voice (audio by ElevenLabs). The StafBook suite described below is private; this film shows the same methods on public apps.</p>
+    </div>
+    <div class="rv" style="margin-top:2.2rem;max-width:56rem">
+      <h3 style="font-size:1.2rem;margin:0 0 .6rem">Earlier demo: AI-driven checkout</h3>
       <video controls preload="metadata" playsinline poster="assets/demo/automation-demo-poster.jpg?v=2" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:#0E1418">
         <source src="assets/demo/automation-demo.mp4?v=2" type="video/mp4">
         Your browser does not play this video. <a href="assets/demo/automation-demo.mp4?v=2">Download it (MP4, 5.1 MB)</a>.
       </video>
       <p class="mut" style="margin-top:.7rem;font-size:.85rem;color:var(--text-faint)">Narration is an AI voice (ElevenLabs). <a href="https://github.com/YayanSeptianSaputra/playwright-saucedemo-demo" target="_blank" rel="noopener">View the Playwright test code on GitHub</a>. The StafBook suite shown in the sections below is private; this demo shows the same habits on a public site.</p>
-          <h3 class="rv" style="margin-top:2.2rem;font-size:1.2rem">On a real phone (1 minute)</h3>
-      <p class="mut" style="margin:.5rem 0 1rem;font-size:.92rem;color:var(--text-soft)">An Android phone connected over USB debugging and mirrored live with scrcpy, while Maestro drives it through a public Wikipedia page. The log on the left is the real Maestro output from the run.</p>
-      <video controls preload="metadata" playsinline poster="assets/demo/mobile-demo-poster.jpg" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:#0E1418">
-        <source src="assets/demo/mobile-demo.mp4" type="video/mp4">
-        Your browser does not play this video. <a href="assets/demo/mobile-demo.mp4">Download it (MP4, 2.4 MB)</a>.
-      </video>
     </div>
   </div>
 </section>
@@ -774,5 +781,11 @@
 })();
 </script>
 
+<script>
+(function(){var v=document.getElementById('film');if(!v)return;
+document.querySelectorAll('.film-lang').forEach(function(b){b.addEventListener('click',function(){
+var l=b.dataset.lang;v.pause();v.poster='assets/demo/film-'+l+'-poster.jpg';v.src='assets/demo/film-'+l+'.mp4';
+document.querySelectorAll('.film-lang').forEach(function(x){var on=x===b;x.setAttribute('aria-pressed',on);x.style.background=on?'var(--text)':'transparent';x.style.color=on?'var(--paper)':'var(--text)';});});});})();
+</script>
 </body>
 </html>
