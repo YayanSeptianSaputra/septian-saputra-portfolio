@@ -445,14 +445,27 @@
 <section class="block" id="demo">
   <div class="wrap">
     <div class="sec-eyebrow rv">Demo</div>
-    <h2 class="rv" style="font-size:1.35rem;margin:.4rem 0 .5rem">Claude drives a browser by itself</h2>
-    <p class="lede rv" style="margin-top:.2rem;max-width:52rem">On screen: Claude Code takes a public shopping site (saucedemo.com) through a full checkout with no manual clicks, then a Playwright + TypeScript suite runs seven checks, all passing. Public site only, so no private data is shown.</p>
-    <div class="rv" style="margin-top:1.2rem;max-width:56rem">
+    <p class="lede rv" style="margin-top:.4rem;max-width:52rem">Two short videos on public apps only, so no private data is shown.</p>
+    <div class="rv" style="margin-top:1.4rem;max-width:56rem">
+      <h2 style="font-size:1.35rem;margin:0 0 .4rem">Web + native Android (2 min)</h2>
+      <p style="margin:0 0 .8rem;font-size:.95rem;color:var(--text-soft)">A Playwright + TypeScript suite (29 checks across Desktop Chrome and a Pixel 7 profile, stable over three runs) and a Maestro flow driving the native Google Calculator on a real Android phone over USB debugging, with a JavaScript oracle checking 4 of 4 cases.</p>
+      <div role="group" aria-label="Narration language" style="display:flex;gap:.5rem;margin-bottom:.7rem">
+        <button type="button" class="film-lang" data-lang="en" aria-pressed="true" style="padding:.35rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--text);color:var(--paper);font:inherit;font-size:.85rem;cursor:pointer">English</button>
+        <button type="button" class="film-lang" data-lang="id" aria-pressed="false" style="padding:.35rem .9rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);font:inherit;font-size:.85rem;cursor:pointer">Bahasa Indonesia</button>
+      </div>
+      <video id="film" controls preload="metadata" playsinline poster="assets/demo/film-en-poster.jpg" src="assets/demo/film-en.mp4" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:#0E1418">
+        Your browser does not play this video. <a href="assets/demo/film-en.mp4">Download it (MP4, 6.8 MB)</a>.
+      </video>
+      <p style="margin-top:.7rem;font-size:.85rem;color:var(--text-faint)">Narration is an AI voice (audio by ElevenLabs).</p>
+    </div>
+    <div class="rv" style="margin-top:2.2rem;max-width:56rem">
+      <h2 style="font-size:1.35rem;margin:0 0 .4rem">Claude drives a browser by itself</h2>
+      <p style="margin:0 0 .8rem;font-size:.95rem;color:var(--text-soft)">On screen: Claude Code takes a public shopping site (saucedemo.com) through a full checkout with no manual clicks, then a Playwright + TypeScript suite runs seven checks, all passing.</p>
       <video controls preload="metadata" playsinline poster="assets/demo/automation-demo-poster.jpg?v=2" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:#0E1418">
         <source src="assets/demo/automation-demo.mp4?v=2" type="video/mp4">
         Your browser does not play this video. <a href="assets/demo/automation-demo.mp4?v=2">Download it (MP4, 5.1 MB)</a>.
       </video>
-      <p style="margin-top:.7rem;font-size:.85rem;color:var(--text-faint)">Narration is an AI voice (ElevenLabs). <a href="portfolio.html#demo">More demos, including the web + native Android film</a> &middot; <a href="https://github.com/YayanSeptianSaputra/playwright-saucedemo-demo" target="_blank" rel="noopener">Playwright test code on GitHub</a>.</p>
+      <p style="margin-top:.7rem;font-size:.85rem;color:var(--text-faint)">Narration is an AI voice (ElevenLabs). <a href="portfolio.html#demo">All demos on the portfolio page</a> &middot; <a href="https://github.com/YayanSeptianSaputra/playwright-saucedemo-demo" target="_blank" rel="noopener">Playwright test code on GitHub</a>.</p>
     </div>
   </div>
 </section>
@@ -667,5 +680,11 @@
 })();
 </script>
 
+<script>
+(function(){var v=document.getElementById('film');if(!v)return;
+document.querySelectorAll('.film-lang').forEach(function(b){b.addEventListener('click',function(){
+var l=b.dataset.lang;v.pause();v.poster='assets/demo/film-'+l+'-poster.jpg';v.src='assets/demo/film-'+l+'.mp4';
+document.querySelectorAll('.film-lang').forEach(function(x){var on=x===b;x.setAttribute('aria-pressed',on);x.style.background=on?'var(--text)':'transparent';x.style.color=on?'var(--paper)':'var(--text)';});});});})();
+</script>
 </body>
 </html>
