@@ -1,5 +1,5 @@
 # Test case management: Qase
 
-54 test case aplikasi uji publik "Toko Mini" (registrasi, belanja, diskon, kupon, bayar, riwayat, UI) **sudah diimpor ke Qase** pada 26 Okt 2026: project "Toko Mini QA" (kode TM), 7 suite, 54 test case, lengkap dengan langkah, prioritas, dan perilaku positif/negatif. Bukti: `qase-repository.jpg`.
+31 test cases for the public demo shop saucedemo.com (login, inventory, cart, checkout, performance, accessibility), imported into a Qase project "SauceDemo QA" with 6 suites, steps, priority, and positive/negative behaviour. Screenshot: `qase-saucedemo-repository.jpg`.
 
-File: `qase-v1.csv` (format Qase CSV v1, sumber tipe "Qase.io CSV [deprecated]") dipakai untuk impor. `testrail-import.csv` disiapkan untuk TestRail tetapi belum diimpor.
+`qase-saucedemo.csv` is the Qase CSV v1 file used for the import (source type "Qase.io CSV [deprecated]").

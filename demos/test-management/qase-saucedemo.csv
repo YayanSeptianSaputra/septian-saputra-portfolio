@@ -1,0 +1,104 @@
+id,title,description,preconditions,postconditions,priority,severity,type,behavior,automation,status,suite_id,suite_parent_id,suite,suite_without_cases,steps_actions,steps_results,steps_data
+,,,,,,,,,,,1,,Login,1,,,
+,,,,,,,,,,,2,,Inventory,1,,,
+,,,,,,,,,,,3,,Cart,1,,,
+,,,,,,,,,,,4,,Checkout,1,,,
+,,,,,,,,,,,5,,Performance,1,,,
+,,,,,,,,,,,6,,Accessibility,1,,,
+,SD-01 Login with valid credentials,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,high,undefined,functional,positive,is-not-automated,actual,1,,Login,,"1. Enter username standard_user
+2. Enter password secret_sauce
+3. Click Login","1. 
+2. 
+3. Products page opens at /inventory.html with 6 items",
+,SD-02 Login with wrong password,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,high,undefined,functional,negative,is-not-automated,actual,1,,Login,,"1. Enter username standard_user
+2. Enter password wrong
+3. Click Login","1. 
+2. 
+3. Error: Username and password do not match any user in this service",
+,SD-03 Login with empty username,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,high,undefined,functional,negative,is-not-automated,actual,1,,Login,,"1. Leave username empty
+2. Enter password secret_sauce
+3. Click Login","1. 
+2. 
+3. Error: Username is required",
+,SD-04 Login with empty password,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,high,undefined,functional,negative,is-not-automated,actual,1,,Login,,"1. Enter username standard_user
+2. Leave password empty
+3. Click Login","1. 
+2. 
+3. Error: Password is required",
+,SD-05 Login as locked out user,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,high,undefined,functional,negative,is-not-automated,actual,1,,Login,,"1. Enter username locked_out_user
+2. Enter password secret_sauce
+3. Click Login","1. 
+2. 
+3. Error: Sorry, this user has been locked out",
+,SD-06 Username is case sensitive,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,medium,undefined,functional,negative,is-not-automated,actual,1,,Login,,"1. Enter username STANDARD_USER
+2. Enter password secret_sauce
+3. Click Login","1. 
+2. 
+3. Login is rejected with the mismatch error",
+,SD-07 Logout returns to the login page,Target: https://www.saucedemo.com (public demo shop),User is logged in,,medium,undefined,functional,positive,is-not-automated,actual,1,,Login,,"1. Open the menu
+2. Click Logout","1. 
+2. Login page is shown and /inventory.html is no longer accessible",
+,SD-08 Direct access to inventory without login,Target: https://www.saucedemo.com (public demo shop),User is not logged in,,high,undefined,security,negative,is-not-automated,actual,1,,Login,,1. Open /inventory.html directly,1. User is redirected to login with an access error,
+,SD-09 Inventory shows 6 products,Target: https://www.saucedemo.com (public demo shop),User is logged in,,high,undefined,functional,positive,is-not-automated,actual,2,,Inventory,,1. Open the Products page,"1. Exactly 6 products with name, description, price, and image",
+,SD-10 Sort by price low to high,Target: https://www.saucedemo.com (public demo shop),User is on Products page,,medium,undefined,functional,positive,is-not-automated,actual,2,,Inventory,,1. Select Price (low to high),1. Prices are in ascending order,
+,SD-11 Sort by price high to low,Target: https://www.saucedemo.com (public demo shop),User is on Products page,,medium,undefined,functional,positive,is-not-automated,actual,2,,Inventory,,1. Select Price (high to low),1. Prices are in descending order,
+,SD-12 Sort by name A to Z,Target: https://www.saucedemo.com (public demo shop),User is on Products page,,medium,undefined,functional,positive,is-not-automated,actual,2,,Inventory,,1. Select Name (A to Z),1. Names are in alphabetical order,
+,SD-13 Sort by name Z to A,Target: https://www.saucedemo.com (public demo shop),User is on Products page,,low,undefined,functional,positive,is-not-automated,actual,2,,Inventory,,1. Select Name (Z to A),1. Names are in reverse alphabetical order,
+,SD-14 Open product detail,Target: https://www.saucedemo.com (public demo shop),User is on Products page,,medium,undefined,functional,positive,is-not-automated,actual,2,,Inventory,,1. Click a product name,1. Detail page shows the same name and price as the list,
+,SD-15 Add one item updates the badge,Target: https://www.saucedemo.com (public demo shop),User is on Products page,,high,undefined,functional,positive,is-not-automated,actual,3,,Cart,,1. Click Add to cart on Sauce Labs Backpack,1. Cart badge shows 1 and the button changes to Remove,
+,SD-16 Add three items updates the badge,Target: https://www.saucedemo.com (public demo shop),User is on Products page,,medium,undefined,functional,positive,is-not-automated,actual,3,,Cart,,1. Add three different products,1. Cart badge shows 3,
+,SD-17 Remove item from the cart,Target: https://www.saucedemo.com (public demo shop),One item is in the cart,,high,undefined,functional,positive,is-not-automated,actual,3,,Cart,,"1. Open the cart
+2. Click Remove","1. 
+2. Item disappears and the badge is cleared",
+,SD-18 Cart keeps items after navigating,Target: https://www.saucedemo.com (public demo shop),One item is in the cart,,medium,undefined,functional,positive,is-not-automated,actual,3,,Cart,,"1. Go to a product detail
+2. Go back to Products","1. 
+2. Badge still shows 1 and the button still says Remove",
+,SD-19 Empty cart can still proceed to checkout,Target: https://www.saucedemo.com (public demo shop),Cart is empty,,low,undefined,functional,negative,is-not-automated,actual,3,,Cart,,"1. Open the cart
+2. Click Checkout","1. 
+2. Behavior is recorded and compared with the expected rule (an empty cart should not be orderable)",
+,SD-20 Complete checkout with valid data,Target: https://www.saucedemo.com (public demo shop),One item is in the cart,,high,undefined,functional,positive,is-not-automated,actual,4,,Checkout,,"1. Open cart and click Checkout
+2. Enter first name, last name, postal code
+3. Click Continue
+4. Click Finish","1. 
+2. 
+3. 
+4. Thank you for your order is shown",
+,SD-21 First name is required,Target: https://www.saucedemo.com (public demo shop),User is on Checkout information,,high,undefined,functional,negative,is-not-automated,actual,4,,Checkout,,"1. Leave first name empty
+2. Fill other fields
+3. Click Continue","1. 
+2. 
+3. Error: First Name is required",
+,SD-22 Last name is required,Target: https://www.saucedemo.com (public demo shop),User is on Checkout information,,high,undefined,functional,negative,is-not-automated,actual,4,,Checkout,,"1. Leave last name empty
+2. Fill other fields
+3. Click Continue","1. 
+2. 
+3. Error: Last Name is required",
+,SD-23 Postal code is required,Target: https://www.saucedemo.com (public demo shop),User is on Checkout information,,high,undefined,functional,negative,is-not-automated,actual,4,,Checkout,,"1. Leave postal code empty
+2. Fill other fields
+3. Click Continue","1. 
+2. 
+3. Error: Postal Code is required",
+,SD-24 Special characters in the name,Target: https://www.saucedemo.com (public demo shop),User is on Checkout information,,medium,undefined,functional,negative,is-not-automated,actual,4,,Checkout,,"1. Enter a name containing symbols
+2. Fill other fields
+3. Click Continue","1. 
+2. 
+3. Behavior is recorded; invalid characters should be validated",
+,SD-25 Very long first name (boundary),Target: https://www.saucedemo.com (public demo shop),User is on Checkout information,,low,undefined,regression,negative,is-not-automated,actual,4,,Checkout,,"1. Enter a 256 character first name
+2. Fill other fields
+3. Click Continue","1. 
+2. 
+3. Behavior at the length limit is recorded and compared with the expected maximum",
+,SD-26 Order summary total equals item total plus tax,Target: https://www.saucedemo.com (public demo shop),User is on Checkout overview,,high,undefined,functional,positive,is-not-automated,actual,4,,Checkout,,"1. Read item total and tax
+2. Compare with the total","1. 
+2. Total = item total + tax, to two decimals",
+,SD-27 Item total equals the sum of item prices,Target: https://www.saucedemo.com (public demo shop),Two items are in the cart,,high,undefined,functional,positive,is-not-automated,actual,4,,Checkout,,"1. Go to Checkout overview
+2. Add the item prices","1. 
+2. Item total equals the sum of both prices",
+,SD-28 Cancel on the information step,Target: https://www.saucedemo.com (public demo shop),User is on Checkout information,,low,undefined,functional,positive,is-not-automated,actual,4,,Checkout,,1. Click Cancel,1. User returns to the cart with items kept,
+,SD-29 Cart is cleared after the order,Target: https://www.saucedemo.com (public demo shop),Order was completed,,high,undefined,functional,positive,is-not-automated,actual,4,,Checkout,,1. Click Back Home,1. Cart badge is gone and the cart is empty,
+,SD-30 Login with performance_glitch_user,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,medium,undefined,performance,positive,is-not-automated,actual,5,,Performance,,"1. Login as performance_glitch_user
+2. Measure time to the Products page","1. 
+2. Page loads; delay is measured and compared with standard_user",
+,SD-31 Login form is operable by keyboard,Target: https://www.saucedemo.com (public demo shop),User is on the login page,,medium,undefined,usability,positive,is-not-automated,actual,6,,Accessibility,,"1. Tab through username, password, Login
+2. Press Enter","1. 
+2. All fields get focus in order and Enter submits the form",
