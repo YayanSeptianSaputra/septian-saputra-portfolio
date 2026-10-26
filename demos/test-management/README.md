@@ -1,5 +1,5 @@
-# Test case management: siap impor ke TestRail / Qase
+# Test case management: Qase
 
-Isi: `testrail-import.csv` dan `qase-import.csv`, 54 test case untuk aplikasi uji publik "Toko Mini" (registrasi, validasi, boundary, checkout). Kolom: modul/suite, judul, tipe (positif, negatif, boundary), prioritas, prasyarat, langkah, hasil yang diharapkan.
+54 test case aplikasi uji publik "Toko Mini" (registrasi, belanja, diskon, kupon, bayar, riwayat, UI) **sudah diimpor ke Qase** pada 26 Okt 2026: project "Toko Mini QA" (kode TM), 7 suite, 54 test case, lengkap dengan langkah, prioritas, dan perilaku positif/negatif. Bukti: `qase-repository.jpg`.
 
-**Status:** file impor sudah siap, tetapi belum diimpor ke TestRail atau Qase.
+File: `qase-v1.csv` (format Qase CSV v1, sumber tipe "Qase.io CSV [deprecated]") dipakai untuk impor. `testrail-import.csv` disiapkan untuk TestRail tetapi belum diimpor.
