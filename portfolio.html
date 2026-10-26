@@ -450,6 +450,23 @@
   </div>
 </section>
 
+<!-- ============ Demo projects: tools ============ -->
+<section class="block alt" id="tools">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Tools in practice · demo projects</div>
+    <h2 class="rv">Other test tools, on public apps</h2>
+    <p class="lede rv">Small demo projects at a foundational level, built on public sites and APIs only (no StafBook data). Each one was run and passed; code and run output are in the repo.</p>
+    <ul class="rv" style="max-width:56rem;margin-top:1.2rem;padding-left:1.1rem;display:flex;flex-direction:column;gap:.7rem;color:var(--text-soft)">
+      <li><b style="color:var(--text)">k6 load test.</b> Smoke plus 5-VU load on a public demo API with thresholds (error rate under 1%, p95 under 1.5 s). Result: 81 requests, 0% failed, p95 435 ms. <a href="https://github.com/YayanSeptianSaputra/septian-saputra-portfolio/tree/main/demos/k6">Code</a></li>
+      <li><b style="color:var(--text)">Selenium (Python) + pytest.</b> Login error, product list, price sort, and cart badge on saucedemo.com with explicit waits, headless Chrome. 4 of 4 passed. <a href="https://github.com/YayanSeptianSaputra/septian-saputra-portfolio/tree/main/demos/selenium-python">Code</a></li>
+      <li><b style="color:var(--text)">Cypress.</b> Login, product list, full checkout, and form validation on saucedemo.com. 4 of 4 passed. <a href="https://github.com/YayanSeptianSaputra/septian-saputra-portfolio/tree/main/demos/cypress">Code</a></li>
+      <li><b style="color:var(--text)">Python API tests (pytest + requests).</b> Status, schema, boundary 404 cases, POST 201, DELETE, and response time on JSONPlaceholder. 11 of 11 passed. <a href="https://github.com/YayanSeptianSaputra/septian-saputra-portfolio/tree/main/demos/api-python">Code</a></li>
+      <li><b style="color:var(--text)">ERD and UML.</b> ERD, use case, sequence, state, and class diagrams for the Toko Mini database from a technical test, noting that the schema declares no foreign keys, unique, or check constraints. <a href="https://github.com/YayanSeptianSaputra/septian-saputra-portfolio/tree/main/demos/erd-uml">Diagrams</a></li>
+      <li><b style="color:var(--text)">Test case management.</b> 54 test cases prepared as TestRail and Qase import files (not yet imported into either tool). <a href="https://github.com/YayanSeptianSaputra/septian-saputra-portfolio/tree/main/demos/test-management">Files</a></li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ 1. API Regression Platform ============ -->
 <section class="block">
   <div class="wrap">

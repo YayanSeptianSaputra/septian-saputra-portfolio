@@ -1,0 +1,6 @@
+test_jsonplaceholder.py::test_response_time_wajar
+  /opt/anaconda3/lib/python3.13/site-packages/urllib3/response.py:237: DependencyWarning: Brotli >= 1.2.0 is required to prevent decompression bombs.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+11 passed, 2 warnings in 6.16s
